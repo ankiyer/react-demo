@@ -155,7 +155,7 @@ class GameBoard extends React.Component{
     console.log("---");
     window.addEventListener("keydown",this.gameHandle.bind(this),false);
     window.addEventListener('devicemotion',function(e){
-      var eventaccelerationIncludingGravity=event.accelerationIncludingGravity;
+      var eventaccelerationIncludingGravity=e.accelerationIncludingGravity;
       if(this.gameState==1){
         if(eventaccelerationIncludingGravity.x<-1){
           this.setState({heroLoc:0})
