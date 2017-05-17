@@ -1,0 +1,255 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: #000;
+}
+.board{
+  width: 480px;
+  height: 800px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  border: #fff 5px solid;
+}
+.roaded{
+  background: url('../img/road.png') repeat-y;
+  width:480px;
+  height: 1600px;
+  position: absolute;
+  left: 0;
+  top:-800px;
+}
+.road{
+  width: 320px;
+  height: 800px;
+  position: absolute;
+  left: 50%;
+  top:0;
+  margin-left: -160px;
+}
+.roadRun{
+  transform: translateZ(0);
+  animation: roadRun 1.2s linear infinite;
+}
+@keyframes roadRun{
+  100%{
+    transform: translateY(800px);
+  }
+}
+.hero{
+  background: url('../img/hero.png') no-repeat 50% 0,
+              url('../img/heroDied.png') no-repeat -1000% 0,
+              url('../img/heroSuper.png') no-repeat -1000% 0;
+  transition: transform  .5s ease;
+  width: 142px;
+  height: 162px;
+  position: absolute;
+  bottom:104px;
+  left: 0;
+  display: none;
+}
+.start{
+  background: url('../img/start.png') no-repeat;
+  width: 260px;
+  height: 85px;
+  position: absolute;
+  left: 50%;
+  top:600px;
+  margin-left: -130px;
+  // margin-top: -42px;
+  z-index: 10;
+  cursor: pointer;
+}
+.kilo{
+  background: url('../img/kilo.png') no-repeat;
+  width: 83px;
+  height: 100px;
+  line-height: 100px;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top:70px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffea00;
+  padding-right: 50px;
+}
+.enemy{
+  transform: translateZ(0);
+  width: 142px;
+  position: absolute;
+  // height: 160px;
+}
+.enemy .body{
+  height: 100%;
+  position: relative;
+}
+.enemy0{
+  height: 160px;
+  top:-160px;
+}
+.enemy0 .body{
+  background: url('../img/car0.png') no-repeat 50% 0;
+}
+.enemy1{
+  height: 160px;
+  top:-160px;
+}
+.enemy1 .body{
+  background: url('../img/car1.png') no-repeat 50% 0;
+}
+.enemy2{
+  height: 220px;
+  top:-220px;
+}
+.enemy2 .body{
+  background: url('../img/car2.png') no-repeat 50% 0;
+}
+.roadplay .hero{
+  animation: show .5s ease;
+  display: block;
+}
+@keyframes show{
+  0%{
+    transform: translateY(172px);
+  }
+}
+.hide{
+  display: none;
+}
+.hero.left{
+  transform: translateX(0);
+}
+.hero.right{
+  transform: translateX(178px);
+}
+.enemy.speed0{
+  animation: speed 1s linear;
+}
+.enemy.speed1{
+  animation: speed 2s linear;
+}
+.enemy.speed2{
+  animation: speed 2.5s linear;
+}
+@keyframes speed {
+  100%{transform: translateY(1000px);}
+}
+.enemy.loc0{
+  left:0;
+}
+.enemy.loc1{
+  left:178px;
+}
+.failbub{
+  width:380px;
+  height:240px;
+  border-radius:10px;
+  position: absolute;
+  left:50px;
+  top:50%;
+  display: none;
+  z-index:111;
+  margin-top:-130px;
+}
+.failbub .failtext{
+  background: url('../img/failedNotice.png') no-repeat 50% 0;
+  width:100%;
+  height:116px;
+  display: block;
+}
+.failbub .retry{
+  background: url('../img/playAgainBtn.png') no-repeat;
+  width: 266px;
+  height: 99px;
+  display: block;
+  margin: 25px auto 0;
+}
+.help{
+  background: rgba(255,255,255,.8);
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin: -20px 0 0 -100px;
+  color:#66757d;
+  border-radius:30px;
+  text-align: center;
+  display: none;
+}
+.help .roadplay{
+  animation: help 2s ease forwards;
+  display: block;
+}
+.helpsp{
+  background: rgba(255,255,255,.8);
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin: -20px 0 0 -100px;
+  color:#66757d;
+  border-radius:30px;
+  text-align: center;
+  display: none;
+}
+.helpsp.show{
+  animation: help 2s ease forwards;
+  display: block;
+}
+@keyframes help {
+  0%{opacity: 0}
+  40%{opacity: 1}
+  80%{opacity: 1}
+  100%{opacity: 0}
+}
+.crashed .enemy,
+.crashed .roaded{
+  animation-play-state: paused;
+}
+.crashed .hero{
+  background: url('../img/heroDied.png') no-repeat;
+}
+.crashed .failbub{
+  animation: failshow .5s ease;
+  display: block;
+}
+@keyframes failshow {
+  0%{transform: translateY(250px);}
+  80%{transform: translateY(-12px);}
+  100%{transform: translateY(0);}
+}
+.superMode .hero{
+  animation: herosuper .1s ease infinite;
+  background: url('../img/heroSuper.png') no-repeat 8px 0px;
+  height: 176px;
+  bottom:104px;
+}
+@keyframes herosuper {
+  0%{opacity: 1}
+  50%{opacity: 0.7}
+  100%{opacity: 1}
+}
+.hero .roadRun{
+  animation: roadRun 0.8s linear infinite;
+}
+.superMode .enemy.loc0 .chunge{
+  transition: transform 1s ease-out;
+  transform: translate3d(-80px,0,0) rotate(-280deg);
+  transform-origin: left bottom;
+}
+.superMode .enemy.loc1 .chunge{
+  transition: transform 1s ease-out;
+  transform: translate3d(-80px,0,0) rotate(280deg);
+  transform-origin: left bottom;
+}
