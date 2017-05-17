@@ -154,16 +154,16 @@ class GameBoard extends React.Component{
   componentDidMount(){
     console.log("---");
     window.addEventListener("keydown",this.gameHandle.bind(this),false);
-    window.addEventListener('devicemotion',function(e){
-      var eventaccelerationIncludingGravity=event.accelerationIncludingGravity;
-      if(this.gameState==1){
-        if(eventaccelerationIncludingGravity.x<-1){
-          this.setState({heroLoc:0})
-        }else if(eventaccelerationIncludingGravity.x>1){
-          this.setState({heroLoc:1})
-        }
-      }
-    },false)
+    window.addEventListener("devicemotion", function(event) {
+            var eventaccelerationIncludingGravity = event.accelerationIncludingGravity;
+            if(that.state.gameState == 1){
+                if(eventaccelerationIncludingGravity.x < -1){
+                    that.setState({heroLoc : 0});
+                }else if(eventaccelerationIncludingGravity.x > 1){
+                    that.setState({heroLoc : 1});
+                }
+            }
+        }, false);
   }
   mobilesuper(){
     if(this.state.hassuper==1){
